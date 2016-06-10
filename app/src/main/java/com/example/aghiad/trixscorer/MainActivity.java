@@ -10,14 +10,16 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-   private static Button button_start;
+    private static Button button_start;
 
+    Button about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         OnClickButtonListner();
+        AboutButtonListener();
     }
 
     public void OnClickButtonListner(){
@@ -29,13 +31,23 @@ public class MainActivity extends AppCompatActivity {
         button_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent("com.example.aghiad.trixscorer.ScoreActivity");
-                intent.putExtra("name1",name1.getText().toString());
-                intent.putExtra("name2",name2.getText().toString());
-                intent.putExtra("name3",name3.getText().toString());
-                intent.putExtra("name4",name4.getText().toString());
+                intent.putExtra("name1", name1.getText().toString());
+                intent.putExtra("name2", name2.getText().toString());
+                intent.putExtra("name3", name3.getText().toString());
+                intent.putExtra("name4", name4.getText().toString());
                 startActivity(intent);
+            }
+        });
+    }
+
+    public void AboutButtonListener(){
+        about=(Button)findViewById(R.id.button2);
+        about.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent aintent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(aintent);
             }
         });
     }
